@@ -3,31 +3,24 @@
 	"id": "consentcreepers",
 	"version": "${version}",
 	"name": "Consent Creepers",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Creepers ask for consent before exploding",
 	"authors": [
-		"Me!"
+		"Kevinthegreat"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/kevinthegreat1/consent-creepers",
+		"sources": "https://github.com/kevinthegreat1/consent-creepers"
 	},
-	"license": "CC0-1.0",
+	"license": "GPL-3.0-or-later",
 	"icon": "assets/consentcreepers/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"com.kevinthegreat.consentcreepers.ConsentCreepers"
-		],
-		"client": [
-			"com.kevinthegreat.consentcreepers.ConsentCreepersClient"
 		]
 	},
 	"mixins": [
-		"consentcreepers.mixins.json",
-		{
-			"config": "consentcreepers.client.mixins.json",
-			"environment": "client"
-		}
+		"consentcreepers.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.17.3",
@@ -36,6 +29,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"another-mod": "etiquetteenderman"
 	}
 }
