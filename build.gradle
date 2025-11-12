@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version "${loom_version}"
 	id 'maven-publish'
+	id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
 version = project.mod_version
@@ -86,5 +87,37 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+	}
+}
+
+publishMods {
+	file = remapJar.archiveFile
+	displayName = "Consent Creepers ${mod_version} for ${minecraft_version}"
+	changelog = rootProject.file("CHANGELOG.md").text
+	type = STABLE
+	modLoaders.add("fabric")
+
+	curseforge {
+		projectId = "1383263"
+		projectSlug = "consent-creepers" // Required for discord webhook
+		accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+		minecraftVersionRange {
+			start = "1.21.10"
+			end = "1.21.10"
+		}
+		requires("fabric-api")
+	}
+	modrinth {
+		projectId = "tFG5AuCe"
+		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+		minecraftVersionRange {
+			start = "1.21.10"
+			end = "1.21.10"
+		}
+	}
+	github {
+		repository = "kevinthegreat1/consent-creepers"
+		accessToken = providers.environmentVariable("GITHUB_TOKEN")
+		commitish = "main"
 	}
 }
