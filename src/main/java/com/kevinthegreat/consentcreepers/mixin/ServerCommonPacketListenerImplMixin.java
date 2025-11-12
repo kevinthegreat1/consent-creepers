@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 @Mixin(ServerCommonPacketListenerImpl.class)
-public class ServerCommonPacketListenerImplMixin {
+public abstract class ServerCommonPacketListenerImplMixin {
     @Inject(method = "handleCustomClickAction", at = @At("HEAD"), cancellable = true)
     private void handleCreeperConsent(ServerboundCustomClickActionPacket serverboundCustomClickActionPacket, CallbackInfo ci) {
         if (!serverboundCustomClickActionPacket.id().getNamespace().equals(ConsentCreepers.MOD_ID)) return;
